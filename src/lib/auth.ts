@@ -1,4 +1,5 @@
 import { betterAuth } from 'better-auth'
+import { passkey } from 'better-auth/plugins/passkey'
 import Database from 'better-sqlite3'
 
 export const auth = betterAuth({
@@ -6,4 +7,5 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  plugins: [passkey()],
 })

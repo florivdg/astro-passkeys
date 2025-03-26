@@ -1,2 +1,6 @@
 import { createAuthClient } from 'better-auth/vue'
-export const authClient = createAuthClient()
+import { passkeyClient } from 'better-auth/client/plugins'
+
+export const authClient = createAuthClient({
+  plugins: [passkeyClient()],
+})
