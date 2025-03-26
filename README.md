@@ -1,48 +1,78 @@
-# Astro Starter Kit: Basics
+# Astro Passkeys with Better Auth
 
-```sh
-bun create astro@latest -- --template basics
-```
+This is an **example project** that demonstrates how to implement secure authentication with Passkeys in an Astro application using the Better Auth library.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🔐 Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- Email/password authentication
+- Passkey authentication with WebAuthn
+- User registration and sign-in pages
+- Session management
+- Protected routes
 
 ## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
 │   └── favicon.svg
 ├── src/
+│   ├── components/
+│   │   ├── SignIn.vue      # Login form with Passkey support
+│   │   └── SignUp.vue      # Registration form
 │   ├── layouts/
-│   │   └── Layout.astro
+│   │   └── Layout.astro    # Main layout component
+│   ├── lib/
+│   │   ├── auth.ts         # Server-side auth setup
+│   │   └── auth-client.ts  # Client-side auth setup
 │   └── pages/
-│       └── index.astro
+│       ├── api/auth/[...all].ts  # Auth API routes
+│       ├── index.astro     # Protected homepage
+│       ├── sign-in.astro   # Login page
+│       └── sign-up.astro   # Registration page
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🔧 Setup
+
+1. Clone this repository
+2. Install dependencies:
+   ```sh
+   bun install
+   ```
+3. Copy `.env.example` to `.env` and set your variables:
+   ```sh
+   cp .env.example .env
+   ```
+4. Start the development server:
+   ```sh
+   bun run dev
+   ```
+
+## 💡 How It Works
+
+This example demonstrates:
+
+- Setting up Better Auth with SQLite database
+- Configuring Passkey authentication
+- Building responsive sign-in/sign-up forms with Vue components
+- Protecting routes with authentication checks
+- Managing user sessions
+- Adding passkeys to user accounts
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `bun install`     | Installs dependencies                        |
+| `bun run dev`     | Starts local dev server at `localhost:4321`  |
+| `bun run build`   | Build your production site to `./dist/`      |
+| `bun run preview` | Preview your build locally, before deploying |
 
-## 👀 Want to learn more?
+## 📚 Learn More
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Better Auth Documentation](https://www.better-auth.com/)
+- [WebAuthn & Passkeys](https://webauthn.guide/)
+- [Astro Documentation](https://docs.astro.build)
