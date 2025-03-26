@@ -19,10 +19,13 @@ if (!Astro.locals.session) {
       >You're signed in!</span
     >
 
+    <pre
+      class="rounded-md border border-slate-600 p-4 font-mono text-sm font-light break-words whitespace-pre-wrap text-white">{JSON.stringify(Astro.locals.session)}</pre>
+
     <button
       id="sign-out-btn"
       type="button"
-      class="mt-12 self-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+      class="mt-2 self-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >Sign out</button
     >
   </div>
