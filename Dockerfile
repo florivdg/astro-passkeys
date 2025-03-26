@@ -24,10 +24,12 @@ FROM node:22-alpine
 WORKDIR /app
 
 # Install Bun globally
-RUN npm install -g bun
+RUN apk add --no-cache bash curl gcompat
+RUN curl -fsSL https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:${PATH}"
 
 # Copy package files for bun install
-COPY --from=build /app/package.json /app/bun.lock* ./
+COPY package.json bun.lock ./
 
 # Install production dependencies with bun
 RUN bun install --production
