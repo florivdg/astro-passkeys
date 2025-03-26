@@ -1,11 +1,32 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/Layout.astro'
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+if (!Astro.locals.session) {
+  return Astro.redirect('/sign-in')
+}
 ---
 
 <Layout>
-	<Welcome />
+  <div class="flex flex-col gap-6 sm:mx-auto sm:w-full sm:max-w-sm">
+    <h1 class="text-center text-4xl text-white">This is a secret!</h1>
+
+    <button
+      id="sign-out-btn"
+      type="button"
+      class="self-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+      >Sign out</button
+    >
+  </div>
 </Layout>
+
+<script>
+  import { authClient } from '../lib/auth-client' //import the auth client
+
+  document
+    .getElementById('sign-out-btn')
+    ?.addEventListener('click', async () => {
+      //sign out the user when the button is clicked
+      await authClient.signOut()
+      window.location.href = '/sign-in'
+    })
+</script>
