@@ -2,7 +2,7 @@
   <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     <img
       class="mx-auto h-36 w-auto"
-      src="src/assets/astro-logo-light-gradient.svg"
+      src="/astro-logo-light-gradient.svg"
       alt="Astro"
     />
     <h2
