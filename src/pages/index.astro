@@ -8,12 +8,21 @@ if (!Astro.locals.session) {
 
 <Layout>
   <div class="flex flex-col gap-6 sm:mx-auto sm:w-full sm:max-w-sm">
-    <h1 class="text-center text-4xl text-white">This is a secret!</h1>
+    <img
+      class="mx-auto h-36 w-auto"
+      src="src/assets/astro-logo-light-gradient.svg"
+      alt="Astro"
+    />
+
+    <span
+      class="inline-flex items-center self-center rounded-md bg-green-500/10 px-4 py-2 font-medium text-green-400 ring-1 ring-green-500/20 ring-inset"
+      >You're signed in!</span
+    >
 
     <button
       id="sign-out-btn"
       type="button"
-      class="self-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+      class="mt-12 self-center rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
       >Sign out</button
     >
   </div>
@@ -26,7 +35,12 @@ if (!Astro.locals.session) {
     .getElementById('sign-out-btn')
     ?.addEventListener('click', async () => {
       //sign out the user when the button is clicked
-      await authClient.signOut()
-      window.location.href = '/sign-in'
+      await authClient.signOut({
+        fetchOptions: {
+          onSuccess: () => {
+            window.location.href = '/sign-in'
+          },
+        },
+      })
     })
 </script>
